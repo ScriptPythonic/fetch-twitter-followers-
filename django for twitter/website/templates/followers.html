@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Followers</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'twitter.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+</head>
+<body>
+    <h2>List Of Followers </h2>
+    <ul>
+        {% for user in user_data %}
+            <li>
+                    <img src="{{ user.profile_image_url }}" alt="{{ user.username }} Profile Picture" class="profile-image">
+                    <a href="https://twitter.com/{{ user.username }}" target="_blank" rel="noopener noreferrer" class="twitter-link">
+                    <span class="username">{{ user.username }}</span>
+                </a>
+                <span class="follower-count">{{ user.follower_count }} followers</span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a class="return" href="/" >return</a>
+
+    <style>
+        .return {
+            text-decoration: none;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 22px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+
+        }
+        
+        .return:hover {
+            background-color: #0056b3; 
+        }
+    </style>
+    
+</body>
+</html>
